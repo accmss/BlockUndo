@@ -136,7 +136,7 @@ public static void CloseST() {
     {
         if (mysql_sta != null) 
         {
-        BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", "Closing statement");
+        BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo", "Closing statement");
         mysql_sta.close();
         }
     }
@@ -168,7 +168,7 @@ public static void CloseCon() {
     {
         if (mysql_con != null) 
         {
-        BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", "Closing connection");
+        BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo", "Closing connection");
         mysql_con.close();
         }
     }
