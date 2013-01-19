@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Logger;
 
+
 //IMPORTS - BUKKIT
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -23,9 +24,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class BlockUndo extends JavaPlugin  {
 
-
+	
+public static BlockUndo zPlugin;
 protected static FileConfiguration zConfig;
-public static Logger log = Logger.getLogger("Minecraft");
+public static Logger zLogger = Logger.getLogger("Minecraft");
+
 
 //VARS
 public static World    WORLD;
@@ -43,8 +46,6 @@ public static boolean CMDinProgrss  = false;
 
 public static String format_7zeros = "0,000,000";
 public static String format_4zeros = "0000";
-
-public static BlockUndo zPlugin;
 
 
 public static long thread = 0L;
@@ -119,7 +120,7 @@ public void onEnable() {
 		BlockUndoMetricsLite metrics = new BlockUndoMetricsLite(this);
 		metrics.start();
 		} catch (IOException e) {
-		BlockUndoLib.LogMessage("[MetricsLite] [" + e.getCause() + "]",  e.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[MetricsLite]", e.getCause() + " : " + e.getMessage());
 		}
 
 	//Listners
@@ -133,8 +134,6 @@ public void onDisable()
 
 	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo",  ChatColor.WHITE + "MySQL offline.");
 	BlockUndoLib.CommitAll("onDisable");
-	saveConfig();
-	//MySQL
 	BlockUndoMySQL.Disconnenct();
 	
 }
@@ -168,12 +167,11 @@ int icase = 0;
 		if (cmd.getName().equalsIgnoreCase("query")) icase = 3;
 		if (cmd.getName().equalsIgnoreCase("purge")) icase = 4;
 		if (cmd.getName().equalsIgnoreCase("vaporize")) icase = 5;
-		//if (cmd.getName().equalsIgnoreCase("fixwater")) icase = 6;
 		
 		
 		if (!BlockUndoMySQL.mysql_online) 
 		{
-		BlockUndoLib.Chat(sender, "BlockUndo",  ChatColor.WHITE + "MySQL offline.");
+			BlockUndoLib.Chat(sender, "BlockUndo",  ChatColor.WHITE + "MySQL offline.");
 		return true;
 		}
 		

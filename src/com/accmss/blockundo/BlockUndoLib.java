@@ -86,7 +86,7 @@ public static void AddPlayer(String name, String IP)
 			}
 		} catch (SQLException e) 
 		{
-		BlockUndoLib.LogMessage("[" + e.getErrorCode() + "]", e.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e.getErrorCode() + "]", e.getMessage());
 		}
 	
 }
@@ -113,7 +113,7 @@ public static void AddWorld(String name)
 			}
 		} catch (Exception e) 
 		{
-		BlockUndoLib.LogMessage("[" + e.getCause() + "]", e.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e.getCause() + "]", e.getMessage());
 		}
 	
 }
@@ -145,7 +145,7 @@ public static void AddBlock(String name, Double x1, Double y1, Double z1, int va
 		} 
 		catch (SQLException e) 
 		{
-		BlockUndoLib.LogMessage("[" + e.getErrorCode() + "]"," [" + e.getMessage() + "]");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e.getErrorCode() + "]"," [" + e.getMessage() + "]");
 		}
 		
 }
@@ -189,23 +189,23 @@ public static void CommitAllAsync(String Caller)
 		
 		catch (NumberFormatException e1)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " NumberFormatException");
-		BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-		BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " NumberFormatException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
 		RepairConnection();
 		}
 		catch (SQLException e2)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " SQLException");
-		BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-		BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " SQLException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
 		RepairConnection();
 		}
 		catch (Exception e3)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " Exception");
-		BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-		BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " Exception");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
 		RepairConnection();
 		}
 
@@ -214,16 +214,16 @@ public static void CommitAllAsync(String Caller)
 	double capacity = (secs / 60 ) *100;
 			if (capacity > 80)
 			{
-			BlockUndoLib.LogMessage("", formatter2.format(queries1) + " Updates on thread " + formatter2.format(BlockUndo.thread) + "\\" + formatter2.format(threadId) + " in " + formatter.format(secs) + "s - " + formatter3.format(capacity) + "% Net capacity");
+			BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo", formatter2.format(queries1) + " Updates on thread " + formatter2.format(BlockUndo.thread) + "\\" + formatter2.format(threadId) + " in " + formatter.format(secs) + "s - " + formatter3.format(capacity) + "% Net capacity");
 			}
 
 }
 public static void RepairConnection()
 {
 
-	BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", "Checking connection..");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", "Checking connection..");
 	BlockUndoLib.CheckConnection();
-	BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", "Adding olnine players..");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", "Adding olnine players..");
 	BlockUndoLib.AddPlayers();
 
 }
@@ -240,23 +240,23 @@ public static void CheckConnection()
 		}
 		catch (NumberFormatException e1)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " NumberFormatException");
-		BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-		BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " NumberFormatException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
 		BlockUndoMySQL.mysql_online = false;
 		} 
 		catch (SQLException e2)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " SQLException");
-		BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-		BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " SQLException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
 		BlockUndoMySQL.mysql_online = false;
 		}
 		catch (Exception e3)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " Exception");
-		BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-		BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " Exception");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
 		BlockUndoMySQL.mysql_online = false;
 		}
 
@@ -362,18 +362,10 @@ public static void Chat(CommandSender sender, String PluginName, String message)
 }
 public static void LogCommand(String player, String command){
 	 
-	BlockUndo.log.info("[PLAYER_COMMAND] " + player + ": " + command);
+	BlockUndo.zLogger.info("[PLAYER_COMMAND] " + player + ": " + command);
 
 }
-public static void LogMessage(String player, String command){
-	 
-		if (player.length() > 0)
-		{
-		player = ": " + player;
-		}
-	BlockUndo.log.info("BlockUndo: " + player + command);
 
-}
 
 
 //COMMANDS - CORE
@@ -498,9 +490,9 @@ String[] split = null;
 				catch (Exception e0)
 				{
 				BlockUndoLib.Chat(sender, "BlockUndo", c + " Failed to set type: " + Material.getMaterial(Integer.parseInt(split[0])) + " at " + BlockUndo.LOCTA.toVector().toString());
-				BlockUndoLib.LogMessage("[BlockUndo]", c + " Failed to set type: " + Material.getMaterial(Integer.parseInt(split[0])) + " at " + BlockUndo.LOCTA.toVector().toString());
-				BlockUndoLib.LogMessage("[BlockUndo]", "[" + e0.getMessage() + "]");
-				BlockUndoLib.LogMessage("[" + e0.getClass().getName() + "]", "[" + e0.getStackTrace() + "]");
+				BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", c + " Failed to set type: " + Material.getMaterial(Integer.parseInt(split[0])) + " at " + BlockUndo.LOCTA.toVector().toString());
+				BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", "[" + e0.getMessage() + "]");
+				BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e0.getClass().getName() + "]", "[" + e0.getStackTrace() + "]");
 				}
 			
 			}
@@ -509,21 +501,21 @@ String[] split = null;
 		} 
 		catch (NumberFormatException e1)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Undo]", " NumberFormatException");
-		BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-		BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Undo]", " NumberFormatException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
 		} 
 		catch (SQLException e2)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Undo]", " SQLException");
-		BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-		BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Undo]", " SQLException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
 		}
 		catch (Exception e3)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Undo]", " Exception");
-		BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-		BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Undo]", " Exception");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
 		}
 
 	return c;
@@ -650,9 +642,9 @@ String[] split = null;
 				{
 	
 				BlockUndoLib.Chat(sender, "BlockUndo", c + " Failed to set type: " + Material.getMaterial(Integer.parseInt(split[0])) + " at " + BlockUndo.LOCTA.toVector().toString());
-				BlockUndoLib.LogMessage("[BlockUndo]", c + " Failed to set type: " + Material.getMaterial(Integer.parseInt(split[0])) + " at " + BlockUndo.LOCTA.toVector().toString());
-				BlockUndoLib.LogMessage("[BlockUndo]", "[" + e0.getMessage() + "]");
-				BlockUndoLib.LogMessage("[" + e0.getClass().getName() + "]", "[" + e0.getStackTrace() + "]");
+				BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", c + " Failed to set type: " + Material.getMaterial(Integer.parseInt(split[0])) + " at " + BlockUndo.LOCTA.toVector().toString());
+				BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", "[" + e0.getMessage() + "]");
+				BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e0.getClass().getName() + "]", "[" + e0.getStackTrace() + "]");
 				}
 			
 			}
@@ -662,21 +654,21 @@ String[] split = null;
 		} 
 		catch (NumberFormatException e1)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Redo]", " NumberFormatException");
-		BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-		BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Redo]", " NumberFormatException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
 		} 
 		catch (SQLException e2)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Redo]", " SQLException");
-		BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-		BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Redo]", " SQLException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
 		}
 		catch (Exception e3)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Redo]", " Exception");
-		BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-		BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Redo]", " Exception");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
 		}
 
 	return c;
@@ -792,7 +784,7 @@ private static void FixWaterCore(int x, int y, int z)
 		
 		//GRIEF BLOCKS = cobble/all water/all lava/osidian
 		BlockUndo.BLOCK = BlockUndo.WORLD.getBlockAt(BlockUndo.LOCTA);
-		//BlockUndoLib.LogMessage(BlockUndo.BLOCK.getLocation().toString(), Integer.toString(BlockUndo.BLOCK.getTypeId()));
+		//BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), BlockUndo.BLOCK.getLocation().toString(), Integer.toString(BlockUndo.BLOCK.getTypeId()));
 			if (BlockUndo.BLOCK.getTypeId() == 8)
 				{
 				griefblocks++;
@@ -964,21 +956,21 @@ String qry;
 		} 
 		catch (NumberFormatException e1)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " NumberFormatException");
-		BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-		BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " NumberFormatException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
 		} 
 		catch (SQLException e2)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " SQLException");
-		BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-		BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " SQLException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
 		}
 		catch (Exception e3)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-CommitAllAsync]", " Exception");
-		BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-		BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-CommitAllAsync]", " Exception");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
 		}
 
 	TransUnlock(); // <<----

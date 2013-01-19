@@ -103,25 +103,25 @@ public static void Connect()  {
 		}
 		catch (NumberFormatException e1)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Connect]", " NumberFormatException");
-		BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-		BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Connect]", " NumberFormatException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
 		mysql_online = false;
 		return;
 		} 
 		catch (SQLException e2)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Connect]", " SQLException");
-		BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-		BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Connect]", " SQLException");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
 		mysql_online = false;
 		return;
 		}
 		catch (Exception e3)
 		{
-		BlockUndoLib.LogMessage("[BlockUndo-Connect]", " Exception");
-		BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-		BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Connect]", " Exception");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
 		mysql_online = false;
 		return;
 		}
@@ -136,13 +136,13 @@ public static void CloseST() {
     {
         if (mysql_sta != null) 
         {
-        BlockUndoLib.LogMessage("[BlockUndo]", "Closing statement");
+        BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", "Closing statement");
         mysql_sta.close();
         }
     }
    catch (Exception ex)
    {
-   BlockUndoLib.LogMessage(Level.SEVERE.toString(), ex.getCause() + " : " + ex.getMessage());
+   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), Level.SEVERE.toString(), ex.getCause() + " : " + ex.getMessage());
    }
 
 }
@@ -158,7 +158,7 @@ public static void CloseRS() {
     }
    catch (Exception ex)
    {
-   BlockUndoLib.LogMessage(Level.SEVERE.toString(), ex.getCause() + " : " + ex.getMessage());
+   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), Level.SEVERE.toString(), ex.getCause() + " : " + ex.getMessage());
    }	
 	
 }
@@ -168,13 +168,13 @@ public static void CloseCon() {
     {
         if (mysql_con != null) 
         {
-        BlockUndoLib.LogMessage("[BlockUndo]", "Closing connection");
+        BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo]", "Closing connection");
         mysql_con.close();
         }
     }
    catch (Exception ex)
    {
-   BlockUndoLib.LogMessage(Level.SEVERE.toString(), ex.getCause().toString() + " : " + ex.getMessage());
+   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), Level.SEVERE.toString(), ex.getCause().toString() + " : " + ex.getMessage());
    }
 	
 }
@@ -198,23 +198,23 @@ public static String Query(String query) {
     }
 	catch (NumberFormatException e1)
 	{
-	BlockUndoLib.LogMessage("[BlockUndo-Query]", " NumberFormatException");
-	BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-	BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Query]", " NumberFormatException");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
     return e1.getMessage();
 	} 
 	catch (SQLException e2)
 	{
-	BlockUndoLib.LogMessage("[BlockUndo-Query]", " SQLException");
-	BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-	BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Query]", " SQLException");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
     return e2.getMessage();
 	}
 	catch (Exception e3)
 	{
-	BlockUndoLib.LogMessage("[BlockUndo-Query]", " Exception");
-	BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-	BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Query]", " Exception");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
     return e3.getMessage();
 	}
     
@@ -229,23 +229,23 @@ public static int Update(String query) {
     }
 	catch (NumberFormatException e1)
 	{
-	BlockUndoLib.LogMessage("[BlockUndo-Update]", " NumberFormatException");
-	BlockUndoLib.LogMessage("[" + e1.getCause() + "]", e1.getMessage());
-	BlockUndoLib.LogMessage("[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Update]", " NumberFormatException");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getCause() + "]", e1.getMessage());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e1.getClass().getName() + "]", e1.getStackTrace().toString());
     return mysql_int1;
 	} 
 	catch (SQLException e2)
 	{
-	BlockUndoLib.LogMessage("[BlockUndo-Update]", " SQLException");
-	BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage());
-	BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Update]", " SQLException");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
     return e2.getErrorCode();
 	}
 	catch (Exception e3)
 	{
-	BlockUndoLib.LogMessage("[BlockUndo-Update]", ": Exception");
-	BlockUndoLib.LogMessage("[" + e3.getCause() + "]", e3.getMessage());
-	BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-Update]", ": Exception");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getCause() + "]", e3.getMessage());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
     return mysql_int1;
 	}
 
@@ -259,9 +259,9 @@ public static int SafeUpdate(String query1, String query2, String query3) {
     }
     catch (SQLException ex1)
     {
-    BlockUndoLib.LogMessage("[BlockUndo-SafeUpdate]", " SQLException");
-    BlockUndoLib.LogMessage("[" + ex1.getErrorCode() + "]", ex1.getMessage());
-    BlockUndoLib.LogMessage("[" + ex1.getClass().getName() + "]", ex1.getStackTrace().toString());
+    BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-SafeUpdate]", " SQLException");
+    BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + ex1.getErrorCode() + "]", ex1.getMessage());
+    BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + ex1.getClass().getName() + "]", ex1.getStackTrace().toString());
 	
    	   try
 	   {
@@ -271,9 +271,9 @@ public static int SafeUpdate(String query1, String query2, String query3) {
 	   }
 	   catch (SQLException ex2)
 	   {
-	   BlockUndoLib.LogMessage("[BlockUndo-SafeUpdate]", " SQLException");
-	   BlockUndoLib.LogMessage("[" + ex2.getErrorCode() + "]",  ex2.getMessage());
-	   BlockUndoLib.LogMessage("[" + ex2.getClass().getName() + "]", ex2.getStackTrace().toString());
+	   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-SafeUpdate]", " SQLException");
+	   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + ex2.getErrorCode() + "]",  ex2.getMessage());
+	   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + ex2.getClass().getName() + "]", ex2.getStackTrace().toString());
 	   return ex2.getErrorCode();
 	   }
 
@@ -297,9 +297,9 @@ public static String SafeQuery(String query1, String query2, String query3) {
     }
 	catch (SQLException e2)
 	{
-	BlockUndoLib.LogMessage("[BlockUndo-SafeQuery]", " SQLException");
-	BlockUndoLib.LogMessage("[" + e2.getErrorCode() + "]", e2.getMessage().toString());
-	BlockUndoLib.LogMessage("[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-SafeQuery]", " SQLException");
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getErrorCode() + "]", e2.getMessage().toString());
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e2.getClass().getName() + "]", e2.getStackTrace().toString());
 
    	   try
 	   {
@@ -309,9 +309,9 @@ public static String SafeQuery(String query1, String query2, String query3) {
 	   }
 	   catch (SQLException e3)
 	   {
-	   BlockUndoLib.LogMessage("[BlockUndo-SafeQuery]", " SQLException");
-	   BlockUndoLib.LogMessage("[" + e3.getErrorCode() + "]", e3.getMessage());
-	   BlockUndoLib.LogMessage("[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
+	   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[BlockUndo-SafeQuery]", " SQLException");
+	   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getErrorCode() + "]", e3.getMessage());
+	   BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e3.getClass().getName() + "]", e3.getStackTrace().toString());
 	   return e3.getMessage();
 	   }	
  

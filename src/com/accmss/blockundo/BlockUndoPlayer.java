@@ -17,7 +17,7 @@ public BlockUndoPlayer(BlockUndo xPlugin)
 {
 
 }
-@EventHandler (priority = EventPriority.HIGH)
+@EventHandler (priority = EventPriority.NORMAL)
 public void onPlayerJoin(final PlayerJoinEvent event)
 {
 

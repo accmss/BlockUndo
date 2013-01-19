@@ -23,7 +23,7 @@ public BlockUndoBlocks(BlockUndo xPlugin)
 }  
 
 
-@EventHandler (priority = EventPriority.HIGHEST)
+@EventHandler (priority = EventPriority.NORMAL)
 public void onBlockPlace(final BlockPlaceEvent event) {
 
 //VARS - Async!
@@ -135,7 +135,7 @@ final Material MyMaterial;
 	
 }
 
-@EventHandler (priority = EventPriority.HIGHEST)
+@EventHandler (priority = EventPriority.NORMAL)
 public void onBlockBreak(final BlockBreakEvent event) {
 
 	//EXIT 1 - world
