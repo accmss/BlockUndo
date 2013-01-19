@@ -1,4 +1,0 @@
-BlockUndo
-=========
-
-Bukkit plugin

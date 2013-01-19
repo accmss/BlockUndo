@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="z:/mc2.auzcraft.com/plugins/BlockUndo.jar"/>
+    <options buildIfNeeded="true" compress="false" descriptionLocation="/BlockUndo/build.jardesc" exportErrors="false" exportWarnings="false" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=BlockUndo/src"/>
+        <file path="/BlockUndo/.project"/>
+        <file path="/BlockUndo/config.yml"/>
+        <file path="/BlockUndo/plugin.yml"/>
+        <file path="/BlockUndo/.classpath"/>
+        <file path="/BlockUndo/.gitignore"/>
+    </selectedElements>
+</jardesc>

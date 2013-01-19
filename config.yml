@@ -1,0 +1,17 @@
+# BlockUndo
+
+Database:
+  MySQLMachine: 127.0.0.1
+  MySQLTCPPort: 3306
+  MySQLDatabse: blockundo
+  MySQLUserAcc: root
+  MySQLPasswrd: ''
+Worlds:
+  - world
+  - world_nether
+  - world_the_end
+Regeneration:
+  InfiniteOres: 14,15,16,56,73,82,74,129,153
+  RegenOreDays: 1
+Version:
+  ConfigYMLVer: 1

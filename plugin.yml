@@ -1,0 +1,36 @@
+name: BlockUndo
+main: com.accmss.blockundo.BlockUndo
+version: 1.5.5
+description: BlockUndo permissions.
+
+commands:
+   blockundo:
+      description: Relaods plugin/purges redoes.
+      usage: /blockundo <reload||purge>
+      permission: blockundo.admin
+      permisison-message: You don't have permission
+   undo:
+      description: undoes players grief
+      usage: /undo <player>
+      permission: blockundo.admin
+      permisison-message: You don't have permission
+   redo:
+      description: restores players blocks.
+      usage: /redo <player>
+      permission: blockundo.admin
+      permisison-message: You don't have permission
+   purge:
+      description: purges old block from db.
+      usage: /purge
+      permission: blockundo.admin
+      permisison-message: You don't have permission
+   query:
+      description: gives player anti-grief tools.
+      usage: /query <player>
+      permission: blockundo.player
+      permisison-message: You don't have permission
+   vaporize:
+      description: vaporizes water/lava towers.
+      usage: /vapor
+      permission: blockundo.admin
+      permisison-message: You don't have permission
