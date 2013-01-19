@@ -93,7 +93,7 @@ public static void AddPlayer(String name, String IP)
 public static void AddWorlds()
 {
 
-		for (String s : BlockUndoSettings.Worlds)
+		for (String s : BlockUndoConfig.Worlds)
 		{
 		BlockUndoLib.AddWorld(s.toLowerCase());
 		}
@@ -267,7 +267,7 @@ public static void CheckConnection()
 public static Boolean IsWorldProtected(String world)
 {
 
-	    for (String s : BlockUndoSettings.Worlds)
+	    for (String s : BlockUndoConfig.Worlds)
 	    {
 			if (s.equalsIgnoreCase(world))
 			{
@@ -988,7 +988,7 @@ public static void RegenOres()
 {
 
 	int c = 0;
-	c = BlockUndoMySQL.Update("UPDATE blocks SET `purge` = 'O'  WHERE b1val     IN(" + BlockUndoSettings.InfiniteOres + ")  AND DATEDIFF(now(), `entered`) >= " + BlockUndoSettings.RegenOreDays);
+	c = BlockUndoMySQL.Update("UPDATE blocks SET `purge` = 'O'  WHERE b1val     IN(" + BlockUndoConfig.InfiniteOres + ")  AND DATEDIFF(now(), `entered`) >= " + BlockUndoConfig.RegenOreDays);
 		if (c > 0)
 		{
 		c = UndoCore(BlockUndo.zPlugin.getServer().getConsoleSender(), "SELECT CONCAT_WS(',', b1val, x, y, z, b1dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE `purge` = 'O' ORDER BY entered ASC;");

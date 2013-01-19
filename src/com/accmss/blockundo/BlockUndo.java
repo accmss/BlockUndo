@@ -66,7 +66,7 @@ public void onEnable() {
 	zPlugin = this;
 
 	//Settings
-	BlockUndoSettings.LoadSettings(zPlugin.getFile().getAbsolutePath());
+	BlockUndoConfig.LoadSettings(zPlugin.getFile().getAbsolutePath());
 	
 	//MySQL
 	BlockUndoMySQL.Connect();

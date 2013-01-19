@@ -71,7 +71,7 @@ static String create_blocks = "CREATE TABLE  `blockundo`.`blocks` (\n"
 		+ "  ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
 
-public static String mysql_url = "jdbc:mysql://" + BlockUndoSettings.MySQLMachine + ":" + BlockUndoSettings.MySQLTCPPort;// +"/" + BlockUndo.mysql_dbse;
+public static String mysql_url = "jdbc:mysql://" + BlockUndoConfig.MySQLMachine + ":" + BlockUndoConfig.MySQLTCPPort;// +"/" + BlockUndo.mysql_dbse;
 
 
 
@@ -81,15 +81,15 @@ public static void Connect()  {
 		{
 		//CONNECT
 		//Class.forName("com.mysql.jdbc.Driver"); 
-		mysql_con = DriverManager.getConnection(mysql_url, BlockUndoSettings.MySQLUserAcc, BlockUndoSettings.MySQLPasswrd);
+		mysql_con = DriverManager.getConnection(mysql_url, BlockUndoConfig.MySQLUserAcc, BlockUndoConfig.MySQLPasswrd);
 		mysql_sta  = mysql_con.createStatement();
 		mysql_online = true;
 				
 		//GENERATE SCHEMA
-		mysql_int1 = SafeUpdate("USE " + BlockUndoSettings.MySQLDatabse  + ";", "CREATE DATABASE " + BlockUndoSettings.MySQLDatabse + ";", "USE " + BlockUndoSettings.MySQLDatabse  + ";");
-		mysql_str1 = SafeQuery("SELECT count(id) FROM worlds;", create_worlds.replaceAll("blockundo", BlockUndoSettings.MySQLDatabse), "ALTER TABLE worlds AUTO_INCREMENT = 1;");
-		mysql_str1 = SafeQuery("SELECT count(id) FROM players;", create_players.replaceAll("blockundo", BlockUndoSettings.MySQLDatabse), "ALTER TABLE players AUTO_INCREMENT = 1;");
-		mysql_str2 = SafeQuery("SELECT count(idplayer) FROM blocks;", create_blocks.replaceAll("blockundo", BlockUndoSettings.MySQLDatabse), "ALTER TABLE blocks AUTO_INCREMENT = 1;");
+		mysql_int1 = SafeUpdate("USE " + BlockUndoConfig.MySQLDatabse  + ";", "CREATE DATABASE " + BlockUndoConfig.MySQLDatabse + ";", "USE " + BlockUndoConfig.MySQLDatabse  + ";");
+		mysql_str1 = SafeQuery("SELECT count(id) FROM worlds;", create_worlds.replaceAll("blockundo", BlockUndoConfig.MySQLDatabse), "ALTER TABLE worlds AUTO_INCREMENT = 1;");
+		mysql_str1 = SafeQuery("SELECT count(id) FROM players;", create_players.replaceAll("blockundo", BlockUndoConfig.MySQLDatabse), "ALTER TABLE players AUTO_INCREMENT = 1;");
+		mysql_str2 = SafeQuery("SELECT count(idplayer) FROM blocks;", create_blocks.replaceAll("blockundo", BlockUndoConfig.MySQLDatabse), "ALTER TABLE blocks AUTO_INCREMENT = 1;");
 		
 		//SYNC WORLDS
 		BlockUndoLib.AddWorlds();
