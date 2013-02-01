@@ -61,36 +61,20 @@ final Material MyMaterial;
 			if (event.getPlayer().hasPermission("blockundo.player"))
 			{
 			BlockUndoLib.estimatedTime = System.nanoTime() - BlockUndoLib.startTime; 
-		
+
 			
-		    new Thread(new Runnable() { 
-		        public void run() { 
-		        	//MyWorld = MyPlayer.getWorld();
-		        	try {
-						Thread.sleep(2);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					BlockUndoLib.Query(MyPlayer, MyLocation);
-		        } 
-		    }).start(); 
+			BlockUndo.zPlugin.getServer().getScheduler().runTaskLaterAsynchronously(BlockUndo.zPlugin, new Runnable()
+			{
+				public void run()
+				{
+				BlockUndoLib.Query(MyPlayer, MyLocation);
+				}
+			}, 1L); //20 clicks to a second
+			
 			
 			//NEW cool off (manipulates variable from 1 const thread)
 			BlockUndoLib.startTime = System.nanoTime();        
-
-			/*
-			Block MyBlock2;
-			MyBlock2 = MyWorld.getBlockAt(MyLocation); //NEW cancel water and lava grief
-				if (MyBlock2.getTypeId() > 7 && MyBlock2.getTypeId() < 12)
-				{
-				MyBlock2.setTypeId(0);
-				event.setCancelled(false);
-				return;
-				}
-		*/
 			}
-
-
 
 		event.setCancelled(true);
 		return;
@@ -114,14 +98,15 @@ final Material MyMaterial;
 		{
 
 			//ASYNC delay to get the orientation of the stairs or torch
-			BlockUndo.zPlugin.getServer().getScheduler().runTaskLaterAsynchronously(BlockUndo.zPlugin, new Runnable() {
+			BlockUndo.zPlugin.getServer().getScheduler().runTaskLaterAsynchronously(BlockUndo.zPlugin, new Runnable()
+			{
 				public void run()
 				{
 				Block MyBlock2;
 				MyBlock2 = MyWorld.getBlockAt(MyLocation); //NEW we get the block into a local var from the actual world delyaed by 1 second.
 				BlockUndoLib.AddBlock(MyPlayer.getName(), MyLocation.getX(), MyLocation.getY(), MyLocation.getZ(), 0, MyBlock2.getTypeId(), (byte)0, MyBlock2.getData(), MyPlayer.getWorld().getName().toString());
 				}
-				}, 1L); //20 clicks to a second
+			}, 1L); //20 clicks to a second
 			
 		}
 		else

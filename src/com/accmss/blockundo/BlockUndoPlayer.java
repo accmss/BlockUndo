@@ -25,16 +25,15 @@ public void onPlayerJoin(final PlayerJoinEvent event)
 {
 
 	
-    new Thread(new Runnable() { 
-        public void run() { 
-        	try {
-			Thread.sleep(2);
-			} catch (InterruptedException e) {
-			e.printStackTrace();
-			}
+	
+	BlockUndo.zPlugin.getServer().getScheduler().runTaskLaterAsynchronously(BlockUndo.zPlugin, new Runnable()
+	{
+		public void run()
+		{
     		BlockUndoLib.AddPlayer(event.getPlayer().getName(), event.getPlayer().getAddress().getAddress().getHostAddress());
-        } 
-    }).start(); 
+		}
+	}, 1L); //20 clicks to a second
+	
 
 }
 
@@ -59,17 +58,16 @@ public void onPlayerInteract(final PlayerInteractEvent event) {
 					{
 					BlockUndoLib.estimatedTime = System.nanoTime() - BlockUndoLib.startTime;
 						
-				    new Thread(new Runnable() { 
-				        public void run() { 
-				        	try {
-								Thread.sleep(2);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-							BlockUndoLib.Query(event.getPlayer(), event.getClickedBlock().getLocation());
-				        	} 
-				    }).start(); 
-				    
+					
+					BlockUndo.zPlugin.getServer().getScheduler().runTaskLaterAsynchronously(BlockUndo.zPlugin, new Runnable()
+					{
+						public void run()
+						{
+						BlockUndoLib.Query(event.getPlayer(), event.getClickedBlock().getLocation());
+						}
+					}, 1L); //20 clicks to a second
+					
+			 
 
 
 					//NEW cool off (manipulates variable from 1 const thread)
