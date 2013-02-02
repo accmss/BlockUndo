@@ -30,9 +30,9 @@ public void onPlayerJoin(final PlayerJoinEvent event)
 	{
 		public void run()
 		{
-    		BlockUndoLib.AddPlayer(event.getPlayer().getName(), event.getPlayer().getAddress().getAddress().getHostAddress());
+    	BlockUndoLib.AddPlayer(event.getPlayer().getName(), event.getPlayer().getAddress().getAddress().getHostAddress());
 		}
-	}, 1L); //20 clicks to a second
+	}, 16L); //20 clicks to a second
 	
 
 }
