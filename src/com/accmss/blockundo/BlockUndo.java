@@ -41,7 +41,6 @@ public static Block    BLOCK;
 public static int blocks_cache_redo = 7;
 
 
-
 public static boolean CMDinProgrss  = false; 
 
 public static String format_7zeros = "0,000,000";
@@ -166,7 +165,7 @@ int icase = 0;
 		if (cmd.getName().equalsIgnoreCase("redo"))	 icase = 2;
 		if (cmd.getName().equalsIgnoreCase("query")) icase = 3;
 		if (cmd.getName().equalsIgnoreCase("purge")) icase = 4;
-		if (cmd.getName().equalsIgnoreCase("vaporize")) icase = 5;
+		//if (cmd.getName().equalsIgnoreCase("vaporize")) icase = 5;
 		
 		
 		if (!BlockUndoMySQL.mysql_online) 
@@ -207,10 +206,10 @@ int icase = 0;
 		CMDinProgrss = false;
 		return true;
 		
-		case 5:
-		BlockUndoLib.VaporW(sender);
-		CMDinProgrss = false;
-		return true;
+		//case 5:
+		//BlockUndoLib.VaporW(sender);
+		//CMDinProgrss = false;
+		//return true;
 		
 		//case 6:
 		//BlockUndoLib.WaterW(sender);

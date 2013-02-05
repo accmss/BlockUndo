@@ -51,7 +51,7 @@ public static int ConfigYMLVer = 0;
 
 //VARS - SETTINGS
 public static String SlashChar = null;
-public static int SyncVers = 1;
+public static int SyncVers = 2;
 	
 public static void LoadSettings(String file)
 {

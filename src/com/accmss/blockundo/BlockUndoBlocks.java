@@ -54,7 +54,6 @@ final Material MyMaterial;
 	
 	
 	
-	
 		if (MyMaterial.getId() == 7 && MyPlayer.hasPermission("blockundo.player"))
 		{
 
@@ -94,7 +93,11 @@ final Material MyMaterial;
 	    || MyBlock1.getTypeId() ==  29 || MyBlock1.getTypeId() ==  33 || MyBlock1.getTypeId() ==  69
 	    || MyBlock1.getTypeId() ==  77 || MyBlock1.getTypeId() == 127 || MyBlock1.getTypeId() == 145
 	    || MyBlock1.getTypeId() ==  26 || MyBlock1.getTypeId() ==  27 || MyBlock1.getTypeId() ==  28
-	    || MyBlock1.getTypeId() ==  64 || MyBlock1.getTypeId() ==  65 || MyBlock1.getTypeId() ==  66)
+	    || MyBlock1.getTypeId() ==  64 || MyBlock1.getTypeId() ==  65 || MyBlock1.getTypeId() ==  66
+	    || MyBlock1.getTypeId() ==  63 || MyBlock1.getTypeId() ==  321 || MyBlock1.getTypeId() ==  324
+	    || MyBlock1.getTypeId() ==  330 || MyBlock1.getTypeId() == 139 || MyBlock1.getTypeId() ==  154
+	    || MyBlock1.getTypeId() ==  158 || MyBlock1.getTypeId() == 149 || MyBlock1.getTypeId() ==  150
+	    || MyBlock1.getTypeId() ==  61 || MyBlock1.getTypeId() ==  62 || MyBlock1.getTypeId() ==  54)
 		{
 
 			//ASYNC delay to get the orientation of the stairs or torch

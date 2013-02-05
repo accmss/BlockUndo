@@ -430,8 +430,8 @@ double secs = 0;
 		}
 
 
-	c1 = UndoCore(sender, "SELECT CONCAT_WS(',', b1val, x, y, z, b1dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b1val     IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133) ORDER BY entered ASC;");
-	c2 = UndoCore(sender, "SELECT CONCAT_WS(',', b1val, x, y, z, b1dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b1val NOT IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133) ORDER BY entered ASC;");
+	c1 = UndoCore(sender, "SELECT CONCAT_WS(',', b1val, x, y, z, b1dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b1val     IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133,152,153,155) ORDER BY entered ASC;");
+	c2 = UndoCore(sender, "SELECT CONCAT_WS(',', b1val, x, y, z, b1dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b1val NOT IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133,152,153,155) ORDER BY entered ASC;");
 	c3 = c1 + c2;
 
 	sw1.stop();
@@ -580,13 +580,13 @@ double secs = 0;
 		}
 	
 	//NEW restores blocks in the same order they were destroyed
-	c1 = RedoCore(sender, "SELECT CONCAT_WS(',', b2val, x, y, z, b2dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b2val     IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133) ORDER BY entered ASC;");
-	c2 = RedoCore(sender, "SELECT CONCAT_WS(',', b2val, x, y, z, b2dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b2val NOT IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133) ORDER BY entered ASC;");
+	c1 = RedoCore(sender, "SELECT CONCAT_WS(',', b2val, x, y, z, b2dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b2val     IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133,152,153,155) ORDER BY entered ASC;");
+	c2 = RedoCore(sender, "SELECT CONCAT_WS(',', b2val, x, y, z, b2dat, `name`) AS ex1 FROM blocks INNER JOIN worlds ON worlds.id = blocks.idworld WHERE idplayer = " + playerID + " AND b2val NOT IN(1,2,3,4,5,7,12,13,14,15,16,17,18,19,20,21,22,23,24,25,35,41,42,43,44,45,46,47,48,49,56,57,60,73,74,79,80,82,87,88,89,98,99,100,110,112,129,133,152,153,155) ORDER BY entered ASC;");
     c3 = c1 + c2;
 
 	sw1.stop();
 	secs = sw1.elapsedMillis() / 1000D;
-	BlockUndoMySQL.Update("UPDATE blocks SET `purge` = 'Y' WHERE idplayer = " + playerID + ";");
+	BlockUndoMySQL.Update("UPDATE blocks SET `purge` = 'N' WHERE idplayer = " + playerID + ";");
 	msg = ChatColor.GREEN + player + " " + GetNumber(c3, ChatColor.YELLOW, BlockUndo.format_4zeros, true) + ChatColor.WHITE + " Blocks changed in " + ChatColor.GRAY  + formatter.format(secs)  + ChatColor.WHITE + " seconds.";
 	
 		//if (!sender.equals(BlockUndo.zPlugin.getServer().getConsoleSender())) 
@@ -672,126 +672,6 @@ String[] split = null;
 		}
 
 	return c;
-
-}
-//COMMANDS - ADVANCED
-private static void Vapor(CommandSender sender)
-{
-
-	int x = BlockUndo.PLAYA.getLocation().getBlockX();
-	int y = 128; //BlockUndo.PLAYA.getLocation().getBlockY();
-	int z = BlockUndo.PLAYA.getLocation().getBlockZ();
-	
-	griefblocks = 0;
-	VaporZ(x+0, y, z+0);
-	
-	VaporZ(x+1, y, z+0);
-	VaporZ(x-1, y, z+0);
-	VaporZ(x+0, y, z+1);
-	VaporZ(x+0, y, z-1);
-	
-	VaporZ(x-1, y, z-1);
-	VaporZ(x+1, y, z+1);
-	
-	VaporZ(x-1, y, z+1);
-	VaporZ(x+1, y, z-0);
-	
-	//VaporZ(x+0, y, z+0);
-	
-	VaporZ(x+2, y, z+0);
-	VaporZ(x-2, y, z+0);
-	VaporZ(x+0, y, z+2);
-	VaporZ(x+0, y, z-2);
-	
-	VaporZ(x-2, y, z-2);
-	VaporZ(x+2, y, z+2);
-	
-	VaporZ(x-2, y, z+2);
-	VaporZ(x+2, y, z-0);
-
-	BlockUndoLib.Chat(sender, "BlockUndo", "Vaporized " + griefblocks + " blocks");
-	
-}
-private static void FixWater(CommandSender sender)
-{
-
-	int x = BlockUndo.PLAYA.getLocation().getBlockX();
-	int y = 128; //BlockUndo.PLAYA.getLocation().getBlockY();
-	int z = BlockUndo.PLAYA.getLocation().getBlockZ();
-	
-	griefblocks = 0;
-	FixWaterCore(x+0, y, z+0);
-	
-	FixWaterCore(x+1, y, z+0);
-	FixWaterCore(x-1, y, z+0);
-	FixWaterCore(x+0, y, z+1);
-	FixWaterCore(x+0, y, z-1);
-	
-	FixWaterCore(x-1, y, z-1);
-	FixWaterCore(x+1, y, z+1);
-	
-	FixWaterCore(x-1, y, z+1);
-	FixWaterCore(x+1, y, z-0);
-	
-	//VaporZ(x+0, y, z+0);
-	
-	FixWaterCore(x+2, y, z+0);
-	FixWaterCore(x-2, y, z+0);
-	FixWaterCore(x+0, y, z+2);
-	FixWaterCore(x+0, y, z-2);
-	
-	FixWaterCore(x-2, y, z-2);
-	FixWaterCore(x+2, y, z+2);
-	
-	FixWaterCore(x-2, y, z+2);
-	FixWaterCore(x+2, y, z-0);
-
-	BlockUndoLib.Chat(sender, "BlockUndo", "Flowed " + griefblocks + " blocks");
-	
-}
-private static void VaporZ(int x, int y, int z)
-{
-
-		for(int i=1; i<128; i++)
-		{
-		BlockUndo.LOCTA.setWorld(BlockUndo.PLAYA.getWorld());
-		BlockUndo.LOCTA.setX(x);
-		BlockUndo.LOCTA.setY(y-i);
-		BlockUndo.LOCTA.setZ(z);
-		//GRIEF BLOCKS = cobble/all water/all lava/osidian
-		BlockUndo.BLOCK = BlockUndo.WORLD.getBlockAt(BlockUndo.LOCTA);
-			if (BlockUndo.BLOCK.getTypeId() == 4  ||
-				BlockUndo.BLOCK.getTypeId() == 8  || BlockUndo.BLOCK.getTypeId() == 9 ||
-				BlockUndo.BLOCK.getTypeId() == 10 || BlockUndo.BLOCK.getTypeId() == 11 ||
-				BlockUndo.BLOCK.getTypeId() == 49  || BlockUndo.BLOCK.getTypeId() == 51)
-				{
-				griefblocks++;
-				BlockUndo.BLOCK.setTypeId(0);
-				}
-
-		}
-
-}
-private static void FixWaterCore(int x, int y, int z)
-{
-
-		for(int i=1; i<128; i++)
-		{
-		BlockUndo.LOCTA.setWorld(BlockUndo.PLAYA.getWorld());
-		BlockUndo.LOCTA.setX(x);
-		BlockUndo.LOCTA.setY(i);
-		BlockUndo.LOCTA.setZ(z);
-		
-		//GRIEF BLOCKS = cobble/all water/all lava/osidian
-		BlockUndo.BLOCK = BlockUndo.WORLD.getBlockAt(BlockUndo.LOCTA);
-		//BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), BlockUndo.BLOCK.getLocation().toString(), Integer.toString(BlockUndo.BLOCK.getTypeId()));
-			if (BlockUndo.BLOCK.getTypeId() == 8)
-				{
-				griefblocks++;
-				BlockUndo.BLOCK.setTypeId(9);
-				}
-
-		}
 
 }
 
@@ -1014,7 +894,20 @@ public static void RedoW(final CommandSender sender, final String player)
 	{
 		public void run()
 		{
-		BlockUndoLib.Redo(sender, player);
+		
+			if (player.equalsIgnoreCase("*"))
+			{
+			String[] players = BlockUndoMySQL.Query("SELECT group_concat(name) FROM players;").split(",");
+				for (String s : players)
+				{
+				BlockUndoLib.Redo(sender, s);
+				}
+			}
+			else
+			{
+			BlockUndoLib.Redo(sender, player);
+			}
+
 		}
 
 	});
@@ -1033,32 +926,7 @@ public static void PurgeW(final CommandSender sender)
 	});
 
 }
-public static void VaporW(final CommandSender sender)
-{
 
-	BlockUndo.zPlugin.getServer().getScheduler().runTaskAsynchronously(BlockUndo.zPlugin, new Runnable()
-	{
-		public void run()
-		{
-		BlockUndoLib.Vapor(sender);
-		}
-
-	});
-
-}
-public static void WaterW(final CommandSender sender)
-{
-
-	BlockUndo.zPlugin.getServer().getScheduler().runTaskAsynchronously(BlockUndo.zPlugin, new Runnable()
-	{
-		public void run()
-		{
-		BlockUndoLib.FixWater(sender);
-		}
-
-	});
-
-}
 public static void GiveQ(final CommandSender sender, final Player player)
 {
 
@@ -1072,5 +940,153 @@ public static void GiveQ(final CommandSender sender, final Player player)
 
 }
 
+
+/*
+
+//COMMANDS - ADVANCED
+private static void Vapor(CommandSender sender)
+{
+
+	int x = BlockUndo.PLAYA.getLocation().getBlockX();
+	int y = 128; //BlockUndo.PLAYA.getLocation().getBlockY();
+	int z = BlockUndo.PLAYA.getLocation().getBlockZ();
+	
+	griefblocks = 0;
+	VaporZ(x+0, y, z+0);
+	
+	VaporZ(x+1, y, z+0);
+	VaporZ(x-1, y, z+0);
+	VaporZ(x+0, y, z+1);
+	VaporZ(x+0, y, z-1);
+	
+	VaporZ(x-1, y, z-1);
+	VaporZ(x+1, y, z+1);
+	
+	VaporZ(x-1, y, z+1);
+	VaporZ(x+1, y, z-0);
+	
+	//VaporZ(x+0, y, z+0);
+	
+	VaporZ(x+2, y, z+0);
+	VaporZ(x-2, y, z+0);
+	VaporZ(x+0, y, z+2);
+	VaporZ(x+0, y, z-2);
+	
+	VaporZ(x-2, y, z-2);
+	VaporZ(x+2, y, z+2);
+	
+	VaporZ(x-2, y, z+2);
+	VaporZ(x+2, y, z-0);
+
+	BlockUndoLib.Chat(sender, "BlockUndo", "Vaporized " + griefblocks + " blocks");
+	
+}
+
+
+public static void VaporW(final CommandSender sender)
+{
+
+	BlockUndo.zPlugin.getServer().getScheduler().runTaskAsynchronously(BlockUndo.zPlugin, new Runnable()
+
+}
+private static void FixWater(CommandSender sender)
+{
+
+	int x = BlockUndo.PLAYA.getLocation().getBlockX();
+	int y = 128; //BlockUndo.PLAYA.getLocation().getBlockY();
+	int z = BlockUndo.PLAYA.getLocation().getBlockZ();
+	
+	griefblocks = 0;
+	FixWaterCore(x+0, y, z+0);
+	
+	FixWaterCore(x+1, y, z+0);
+	FixWaterCore(x-1, y, z+0);
+	FixWaterCore(x+0, y, z+1);
+	FixWaterCore(x+0, y, z-1);
+	
+	FixWaterCore(x-1, y, z-1);
+	FixWaterCore(x+1, y, z+1);
+	
+	FixWaterCore(x-1, y, z+1);
+	FixWaterCore(x+1, y, z-0);
+	
+	//VaporZ(x+0, y, z+0);
+	
+	FixWaterCore(x+2, y, z+0);
+	FixWaterCore(x-2, y, z+0);
+	FixWaterCore(x+0, y, z+2);
+	FixWaterCore(x+0, y, z-2);
+	
+	FixWaterCore(x-2, y, z-2);
+	FixWaterCore(x+2, y, z+2);
+	
+	FixWaterCore(x-2, y, z+2);
+	FixWaterCore(x+2, y, z-0);
+
+	BlockUndoLib.Chat(sender, "BlockUndo", "Flowed " + griefblocks + " blocks");
+	
+}
+private static void VaporZ(int x, int y, int z)
+{
+
+		for(int i=1; i<128; i++)
+		{
+		BlockUndo.LOCTA.setWorld(BlockUndo.PLAYA.getWorld());
+		BlockUndo.LOCTA.setX(x);
+		BlockUndo.LOCTA.setY(y-i);
+		BlockUndo.LOCTA.setZ(z);
+		//GRIEF BLOCKS = cobble/all water/all lava/osidian
+		BlockUndo.BLOCK = BlockUndo.WORLD.getBlockAt(BlockUndo.LOCTA);
+			if (BlockUndo.BLOCK.getTypeId() == 4  ||
+				BlockUndo.BLOCK.getTypeId() == 8  || BlockUndo.BLOCK.getTypeId() == 9 ||
+				BlockUndo.BLOCK.getTypeId() == 10 || BlockUndo.BLOCK.getTypeId() == 11 ||
+				BlockUndo.BLOCK.getTypeId() == 49  || BlockUndo.BLOCK.getTypeId() == 51)
+				{
+				griefblocks++;
+				BlockUndo.BLOCK.setTypeId(0);
+				}
+
+		}
+
+}
+private static void FixWaterCore(int x, int y, int z)
+{
+
+		for(int i=1; i<128; i++)
+		{
+		BlockUndo.LOCTA.setWorld(BlockUndo.PLAYA.getWorld());
+		BlockUndo.LOCTA.setX(x);
+		BlockUndo.LOCTA.setY(i);
+		BlockUndo.LOCTA.setZ(z);
+		
+		//GRIEF BLOCKS = cobble/all water/all lava/osidian
+		BlockUndo.BLOCK = BlockUndo.WORLD.getBlockAt(BlockUndo.LOCTA);
+		//BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), BlockUndo.BLOCK.getLocation().toString(), Integer.toString(BlockUndo.BLOCK.getTypeId()));
+			if (BlockUndo.BLOCK.getTypeId() == 8)
+				{
+				griefblocks++;
+				BlockUndo.BLOCK.setTypeId(9);
+				}
+
+		}
+
+}
+
+public static void WaterW(final CommandSender sender)
+{
+
+	BlockUndo.zPlugin.getServer().getScheduler().runTaskAsynchronously(BlockUndo.zPlugin, new Runnable()
+	{
+		public void run()
+		{
+		BlockUndoLib.FixWater(sender);
+		}
+
+	});
+
+}
+
+ * 
+ */
 
 }

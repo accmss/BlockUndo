@@ -11,7 +11,7 @@ Worlds:
   - world_nether
   - world_the_end
 Regeneration:
-  InfiniteOres: 14,15,16,56,73,82,74,129,153
+  InfiniteOres: 14,15,16,56,73,82,89,74,129,153
   RegenOreDays: 1
 Version:
-  ConfigYMLVer: 1
+  ConfigYMLVer: 2
