@@ -74,10 +74,11 @@ public static void AddPlayers()
 public static void AddPlayer(String name, String IP)
 {
 
+	count++;
 	String insert = insert_player;
 	insert = insert.replace("ip_", IP);
 	insert = insert.replace("name_", name); //FIX add name last so name is allowed to contain ip_
-
+	
 		try 
 		{
 			if (BlockUndoMySQL.mysql_online)
@@ -86,7 +87,7 @@ public static void AddPlayer(String name, String IP)
 			}
 		} catch (SQLException e) 
 		{
-		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e.getErrorCode() + "]", e.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), e.getErrorCode() + " " , e.getMessage());
 		}
 	
 }
@@ -113,7 +114,7 @@ public static void AddWorld(String name)
 			}
 		} catch (Exception e) 
 		{
-		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e.getCause() + "]", e.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), e.getCause() + " ", e.getMessage());
 		}
 	
 }
@@ -145,7 +146,7 @@ public static void AddBlock(String name, Double x1, Double y1, Double z1, int va
 		} 
 		catch (SQLException e) 
 		{
-		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[" + e.getErrorCode() + "]"," [" + e.getMessage() + "]");
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), e.getErrorCode() + " "," [" + e.getMessage() + "]");
 		}
 		
 }

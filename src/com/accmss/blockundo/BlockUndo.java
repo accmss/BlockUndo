@@ -68,14 +68,6 @@ public void onEnable() {
 	//Settings
 	BlockUndoConfig.LoadSettings(zPlugin.getFile().getAbsolutePath());
 	
-	//MySQL
-	BlockUndoMySQL.Connect();
-
-	
-		if (!BlockUndoMySQL.mysql_online)
-		{
-		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo", ChatColor.GRAY + BlockUndoMySQL.mysql_version + " : " +  BlockUndoMySQL.mysql_url + ChatColor.RED + " Offline.");
-		}
 
 	WORLD = this.getServer().getWorld(this.getServer().getWorlds().get(0).getName());
 	LOCTA = WORLD.getSpawnLocation();
@@ -107,19 +99,29 @@ public void onEnable() {
 	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo", "Thread : " + thread + "(" + threadNm + ")");
 	*/
 
+	//MySQL
+	BlockUndoMySQL.Connect();
+	
+	if (BlockUndoMySQL.mysql_online)
+	{
 	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo",  "   " + BlockUndoMySQL.mysql_version + " " +  BlockUndoMySQL.mysql_url + "§f Connected.");
 	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo",  BlockUndoLib.GetNumber(BlockUndoMySQL.mysql_players, ChatColor.GREEN, format_7zeros, true) + ChatColor.GRAY + " Players");
 	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo",  BlockUndoLib.GetNumber(BlockUndoMySQL.mysql_worlds.length, ChatColor.GREEN, format_7zeros, true) + ChatColor.GRAY + " Worlds");
 	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo",  BlockUndoLib.GetNumber(BlockUndoMySQL.mysql_blocks, ChatColor.GREEN, format_7zeros, true) + ChatColor.GRAY + " Blocks");
 	BlockUndoLib.Purge(getServer().getConsoleSender());
-	
+	}
+	else
+	{
+	BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "BlockUndo", ChatColor.GRAY + BlockUndoMySQL.mysql_url + ChatColor.RED + " Offline.");
+	}
+
 		//Metrics
 		try
 		{
 		BlockUndoMetricsLite metrics = new BlockUndoMetricsLite(this);
 		metrics.start();
 		} catch (IOException e) {
-		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "[MetricsLite]", e.getCause() + " : " + e.getMessage());
+		BlockUndoLib.Chat(BlockUndo.zPlugin.getServer().getConsoleSender(), "MetricsLite", e.getCause() + " : " + e.getMessage());
 		}
 
 	//Listners
