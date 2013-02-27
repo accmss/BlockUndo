@@ -1,6 +1,6 @@
 name: BlockUndo
 main: com.accmss.blockundo.BlockUndo
-version: 1.5.7
+version: 1.6
 description: BlockUndo permissions.
 
 commands:

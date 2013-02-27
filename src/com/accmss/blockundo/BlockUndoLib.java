@@ -358,7 +358,7 @@ int k = 0;
 public static void Chat(CommandSender sender, String PluginName, String message)
 {
 
-	sender.sendMessage("[" + PluginName + "] " + message);
+	sender.sendMessage("" + PluginName + " " + message);
 	
 }
 public static void LogCommand(String player, String command){
